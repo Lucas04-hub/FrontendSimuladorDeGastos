@@ -1,0 +1,15 @@
+# Ambiente virtual
+.venv/
+
+# Arquivos Python
+__pycache__/
+*.py[cod]
+
+# Cache dos testes
+.pytest_cache/
+
+# Arquivos do macOS
+.DS_Store
+
+# Arquivos de ambiente e segredos
+.env

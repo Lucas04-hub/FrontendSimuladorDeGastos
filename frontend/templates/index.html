@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simulador de Gastos</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <h2 class="logo">Meu Financeiro</h2>
+
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Dashboard</a></li>
+                    <li><a href="#">Movimentações</a></li>
+                    <li><a href="#">Receitas</a></li>
+                    <li><a href="#">Despesas</a></li>
+                    <li><a href="#">Relatórios</a></li>
+                </ul>
+            </nav>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABEÇALHO -->
+            <header class="header">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Bem-vindo ao seu controle financeiro!</p>
+                </div>
+
+                <button type="button" class="btn-primary">
+                    + Nova movimentação
+                </button>
+
+            </header>
+            
+            <section class="form-section" id="formulario-movimentacao" hidden>
+
+                <h2>Nova movimentação</h2>
+
+                <form id="form-movimentacao">
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input
+                            type="text"
+                            id="descricao"
+                            name="descricao"
+                            placeholder="Ex: Salário"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="valor">Valor (R$)</label>
+                        <input
+                            type="number"
+                            id="valor"
+                            name="valor"
+                            step="0.01"
+                            min="0.01"
+                            placeholder="Ex: 3000.00"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo">Tipo de movimentação</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Selecione</option>
+                            <option value="entrada">Receita</option>
+                            <option value="saida">Despesa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <input
+                            type="text"
+                            id="categoria"
+                            name="categoria"
+                            placeholder="Ex: Trabalho"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data">Data</label>
+                        <input
+                            type="date"
+                            id="data"
+                            name="data"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            Salvar movimentação
+                        </button>
+
+                        <button type="button" id="cancelar-formulario" class="btn-secondary">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- RESUMO FINANCEIRO -->
+            <section class="cards">
+
+                <article class="card balance-card">
+                    <h3>Saldo disponível</h3>
+                    <p id="saldo">R$ 0,00</p>
+                </article>
+
+                <article class="card income-card">
+                    <h3>Total de receitas</h3>
+                    <p id="receitas">R$ 0,00</p>
+                </article>
+
+                <article class="card expense-card">
+                    <h3>Total de despesas</h3>
+                    <p id="despesas">R$ 0,00</p>
+                </article>
+
+            </section>
+
+
+            <!-- MOVIMENTAÇÕES RECENTES -->
+            <section class="transactions">
+
+                <div class="section-header">
+                    <h2>Movimentações recentes</h2>
+
+                    <button type="button" class="btn-secondary">
+                        Ver todas
+                    </button>
+                </div>
+
+                <!-- ÁREA DE PESQUISA E FILTROS -->
+                <div class="area-filtros">
+
+                    <!-- BARRA DE PESQUISA -->
+                    <div class="barra-pesquisa">
+
+                        <input
+                            type="search"
+                            id="busca-movimentacoes"
+                            placeholder="Pesquisar movimentações..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+                    <!-- FILTRO POR CATEGORIA -->
+                    <div class="filtro-categoria">
+
+                        <select id="filtro-categoria">
+                            <option value="todas">Todas as categorias</option>
+                        </select>
+
+                    </div>
+
+                    <!-- FILTRO POR TIPO -->
+                    <div class="filtro-tipo">
+
+                        <select id="filtro-tipo-movimentacao">
+
+                            <option value="todos">Todas as movimentações</option>
+
+                            <option value="entrada">Somente receitas</option>
+
+                            <option value="saida">Somente despesas</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- FILTRO POR PERÍODO -->
+                    <div class="filtro-periodo">
+
+                        <div class="campo-data">
+
+                            <label for="data-inicial">De:</label>
+
+                            <input
+                                type="text"
+                                id="data-inicial"
+                                placeholder="DD/MM/AAAA"
+                                inputmode="numeric"
+                                maxlength="10"
+                            >
+
+                        </div>
+
+                        <div class="campo-data">
+
+                            <label for="data-final">Até:</label>
+
+                            <input
+                                type="text"
+                                id="data-final"
+                                placeholder="DD/MM/AAAA"
+                                inputmode="numeric"
+                                maxlength="10"
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <!-- BOTÃO PARA LIMPAR OS FILTROS -->
+                    <button
+                        type="button"
+                        id="btn-limpar-filtros"
+                        class="btn-secondary"
+                    >
+                        Limpar filtros
+                    </button>
+
+                </div>
+
+                <!-- RESUMO DOS RESULTADOS -->
+                <div class="resumo-resultados">
+
+                    <p id="resumo-resultados" aria-live="polite" aria-atomic="true">
+                        Exibindo movimentações
+                    </p>
+
+                </div>
+
+                <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Data</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-movimentacoes">
+
+                        <tr>
+                            <td colspan="6">
+                                Nenhuma movimentação cadastrada.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
+
+    <div class="modal-overlay" id="modal-exclusao" hidden>
+
+        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
+
+            <div class="modal-icon">
+                !
+            </div>
+
+            <h2 id="titulo-modal">Excluir movimentação?</h2>
+
+            <p>
+                Tem certeza de que deseja excluir esta movimentação?
+                Essa ação não poderá ser desfeita.
+            </p>
+
+            <div class="modal-actions">
+
+                <button type="button" id="cancelar-exclusao" class="btn-modal-cancelar">
+                    Cancelar
+                </button>
+
+                <button type="button" id="confirmar-exclusao" class="btn-modal-excluir">
+                    Sim, excluir
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODAL DE CONFIRMAÇÃO DE EDIÇÃO -->
+    <div class="modal-overlay" id="modal-edicao" hidden>
+
+        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-edicao">
+
+            <div class="modal-icon modal-icon-edicao">?</div>
+
+            <h2 id="titulo-modal-edicao">Editar movimentação?</h2>
+
+            <p>
+                Deseja realmente editar esta movimentação?
+                Os dados atuais serão carregados no formulário para que você possa alterá-los.
+            </p>
+
+            <div class="modal-actions">
+
+                <button type="button" id="cancelar-edicao" class="btn-modal-cancelar">
+                    Cancelar
+                </button>
+
+                <button type="button" id="confirmar-edicao" class="btn-modal-editar">
+                    Sim, editar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SISTEMA DE NOTIFICAÇÕES -->
+
+    <div id="notificacao" class="notificacao" role="status" aria-live="polite">
+
+        <span id="notificacao-icone"></span>
+
+        <div class="notificacao-conteudo">
+
+            <strong id="notificacao-titulo"></strong>
+
+            <p id="notificacao-mensagem"></p>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

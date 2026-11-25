@@ -1,0 +1,58 @@
+[
+    {
+        "descricao": "Compra de mercado",
+        "valor": "150.00",
+        "tipo": "entrada",
+        "categoria": "Alimentação",
+        "data": "2026-11-02",
+        "id": 2
+    },
+    {
+        "descricao": "Freelance",
+        "valor": "500",
+        "tipo": "entrada",
+        "categoria": "Trabalho",
+        "data": "2026-11-24",
+        "id": 3
+    },
+    {
+        "descricao": "Super Mercado",
+        "valor": "25",
+        "tipo": "saida",
+        "categoria": "Alimento",
+        "data": "2025-03-12",
+        "id": 5
+    },
+    {
+        "descricao": "Faculdade",
+        "valor": "120",
+        "tipo": "saida",
+        "categoria": "Estudo",
+        "data": "2026-11-20",
+        "id": 6
+    },
+    {
+        "descricao": "Bola",
+        "valor": "15",
+        "tipo": "saida",
+        "categoria": "Esporte",
+        "data": "2025-02-01",
+        "id": 8
+    },
+    {
+        "descricao": "Shopping",
+        "valor": "120",
+        "tipo": "entrada",
+        "categoria": "Trabalho",
+        "data": "2024-07-22",
+        "id": 9
+    },
+    {
+        "descricao": "Super Mercado",
+        "valor": "500",
+        "tipo": "saida",
+        "categoria": "Alimentação",
+        "data": "2025-02-12",
+        "id": 10
+    }
+]

@@ -1,0 +1,1245 @@
+/* 1. CONFIGURAÇÕES GERAIS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6fa;
+    color: #1e293b;
+}
+
+
+/* 2. ESTRUTURA PRINCIPAL */
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* 3. MENU LATERAL */
+
+.sidebar {
+    width: 250px;
+    background-color: #172554;
+    color: white;
+    padding: 30px 20px;
+}
+
+.logo {
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav li {
+    margin-bottom: 12px;
+}
+
+.sidebar nav a {
+    display: block;
+    text-decoration: none;
+    color: #cbd5e1;
+    padding: 13px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background-color: #2563eb;
+    color: white;
+}
+
+
+/* 4. CONTEÚDO PRINCIPAL */
+
+.main-content {
+    flex: 1;
+    padding: 35px;
+    min-width: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #64748b;
+}
+
+
+/* 5. BOTÕES */
+
+.btn-primary,
+.btn-secondary {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+}
+
+/* FEITO AO PRESSIONAR BOTÕES */
+
+.btn-primary:active,
+.btn-secondary:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: none;
+}
+
+/* 6. CARTÕES FINANCEIROS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 35px;
+}
+
+.card {
+    padding: 25px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+}
+
+.card p {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+}
+
+.balance-card {
+    border-left-color: #2563eb;
+}
+
+.income-card {
+    border-left-color: #16a34a;
+}
+
+.expense-card {
+    border-left-color: #dc2626;
+}
+
+
+/* 7. MOVIMENTAÇÕES */
+
+.transactions {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* CABEÇALHO DA ÁREA DE MOVIMENTAÇÕES */
+.transactions .section-header {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: #f8fafc;
+}
+
+th,
+td {
+    padding: 18px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+}
+
+th {
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+td {
+    font-size: 14px;
+    color: #334155;
+}
+
+/* LINHAS ALTERNADAS DA TABELA */
+
+tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* DESTAQUE AO PASSAR O MOUSE */
+tbody tr:hover {
+    background-color: #eff6ff;
+}
+
+/*TRANSIÇÃO DAS LINHAS DA TABELA */
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+
+/* 8. AJUSTES FINAIS */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+/* 9. RESPONSIVIDADE PARA TABLETS */
+
+@media (max-width: 1024px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main-content {
+        padding: 25px;
+    }
+
+    .cards {
+        gap: 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+}
+
+
+/* 10. RESPONSIVIDADE PARA CELULARES */
+
+@media (max-width: 768px) {
+
+    /* MENU LATERAL */
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .sidebar nav li {
+        margin-bottom: 0;
+    }
+
+    .sidebar nav a {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+
+    /* CONTEÚDO PRINCIPAL */
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+
+    /* CARTÕES FINANCEIROS */
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card p {
+        font-size: 23px;
+    }
+
+
+    /* MOVIMENTAÇÕES */
+
+    .transactions {
+        padding: 18px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    th,
+    td {
+        padding: 12px;
+        white-space: nowrap;
+    }
+
+}
+
+
+/* 11. CELULARES PEQUENOS */
+
+@media (max-width: 480px) {
+
+    .sidebar {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 21px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    .transactions {
+        padding: 15px;
+    }
+
+    .section-header h2 {
+        font-size: 17px;
+    }
+
+}
+
+/* 12. FORMULÁRIO DE MOVIMENTAÇÃO */
+
+.form-section {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    animation: aparecerFormulario 0.3s ease;
+}
+
+.form-section h2 {
+    color: #1e293b;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+
+/* 13. ORGANIZAÇÃO DOS CAMPOS */
+
+#form-movimentacao {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #1e293b;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* 14. BOTÕES DO FORMULÁRIO */
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.form-actions .btn-primary,
+.form-actions .btn-secondary {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.form-actions .btn-primary:hover,
+.form-actions .btn-secondary:hover {
+    transform: translateY(-1px);
+}
+
+
+/* 15. ANIMAÇÃO DE ABERTURA */
+
+@keyframes aparecerFormulario {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 16. RESPONSIVIDADE DO FORMULÁRIO */
+
+@media (max-width: 768px) {
+
+    .form-section {
+        padding: 22px;
+    }
+
+    #form-movimentacao {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+}
+
+/* 17. BOTÃO EXCLUIR MOVIMENTAÇÃO */
+
+.btn-excluir {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    padding: 8px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-excluir:hover {
+    background-color: #dc2626;
+    color: #ffffff;
+    border-color: #dc2626;
+    transform: translateY(-1px);
+}
+
+.btn-excluir:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: none;
+}
+
+.btn-excluir:focus-visible {
+    outline: 3px solid rgba(220, 38, 38, 0.25);
+    outline-offset: 2px;
+}
+
+/* 18. MODAL DE CONFIRMAÇÃO DE EXCLUSÃO */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background-color: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(3px);
+
+    animation: aparecerModal 0.2s ease;
+}
+
+.modal-overlay[hidden] {
+    display: none;
+}
+
+.modal-container {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 32px;
+
+    background-color: #ffffff;
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+
+    animation: subirModal 0.25s ease;
+}
+
+.modal-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background-color: #fee2e2;
+    color: #dc2626;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.modal-container h2 {
+    margin-bottom: 12px;
+
+    color: #1e293b;
+    font-size: 21px;
+}
+
+.modal-container p {
+    margin-bottom: 26px;
+
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-modal-cancelar,
+.btn-modal-excluir {
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-modal-cancelar {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.btn-modal-cancelar:hover {
+    background-color: #e2e8f0;
+}
+
+.btn-modal-excluir {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+.btn-modal-excluir:hover {
+    background-color: #b91c1c;
+    transform: translateY(-1px);
+}
+
+.btn-modal-cancelar:focus-visible,
+.btn-modal-excluir:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.3);
+    outline-offset: 3px;
+}
+
+@keyframes aparecerModal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes subirModal {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .modal-container {
+        padding: 25px 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .modal-actions button {
+        width: 100%;
+    }
+
+}
+
+/* 19. BOTÃO EDITAR */
+
+.btn-editar {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #dbeafe;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 6px;
+}
+
+.btn-editar:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.18);
+}
+
+.btn-editar:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: none;
+}
+
+.btn-editar:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.3);
+    outline-offset: 3px;
+}
+
+/* 20. MODAL DE EDIÇÃO */
+
+.modal-icon-edicao {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+/* 21. BOTÃO CONFIRMAR EDIÇÃO */
+
+.btn-modal-editar {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-modal-editar:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.btn-modal-editar:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.3);
+    outline-offset: 3px;
+}
+
+/* 22. SISTEMA DE NOTIFICAÇÕES */
+
+.notificacao {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    width: 350px;
+    max-width: calc(100% - 40px);
+
+    padding: 18px 20px;
+
+    background-color: #ffffff;
+    border-radius: 12px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+
+    border-left: 5px solid #16a34a;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px);
+
+    transition: all 0.3s ease;
+}
+
+.notificacao.ativa {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.notificacao.sucesso {
+    border-left-color: #16a34a;
+}
+
+.notificacao.erro {
+    border-left-color: #dc2626;
+}
+
+.notificacao-conteudo strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #1e293b;
+    font-size: 14px;
+}
+
+.notificacao-conteudo p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+#notificacao-icone {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.notificacao.sucesso #notificacao-icone {
+    color: #16a34a;
+}
+
+.notificacao.erro #notificacao-icone {
+    color: #dc2626;
+}
+
+@media (max-width: 480px) {
+    .notificacao {
+        top: 15px;
+        right: 15px;
+        left: 15px;
+        width: auto;
+        max-width: none;
+    }
+}
+
+/* 23. BARRA DE PESQUISA */
+
+.barra-pesquisa {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* 24. Ícone de pesquisa */
+
+.barra-pesquisa::before {
+    content: "⌕";
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 24px;
+    pointer-events: none;
+}
+
+/* 25. Campo de pesquisa */
+
+.barra-pesquisa input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px 0 48px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    background-color: #ffffff;
+
+    color: #1e293b;
+    font-size: 14px;
+    font-family: inherit;
+
+    outline: none;
+
+    transition: all 0.2s ease;
+}
+
+/* 26. Texto de orientação */
+
+.barra-pesquisa input::placeholder {
+    color: #94a3b8;
+}
+
+/* 27. Quando o usuário clica no campo */
+
+.barra-pesquisa input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* 28. Efeito ao passar o mouse */
+
+.barra-pesquisa input:hover {
+    border-color: #cbd5e1;
+}
+
+/* 29. Ajustes para telas pequenas */
+
+@media (max-width: 480px) {
+
+    .barra-pesquisa {
+        margin: 15px 0;
+    }
+
+    .barra-pesquisa input {
+        height: 44px;
+        font-size: 13px;
+    }
+
+}
+
+/* 30. ÁREA DE PESQUISA E FILTROS */
+.area-filtros {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* 31. Barra de pesquisa */
+.area-filtros .barra-pesquisa {
+    flex: 1 1 250px;
+    min-width: 220px;
+    width: auto;
+    margin: 0;
+}
+
+/* 32. FILTRO POR TIPO */
+.filtro-tipo {
+    flex: 1 1 190px;
+    min-width: 180px;
+}
+
+.filtro-tipo select {
+    width: 100%;
+    height: 48px;
+}
+
+
+.filtro-tipo select:hover {
+    border-color: #cbd5e1;
+}
+
+.filtro-tipo select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* 33. Responsividade */
+
+@media (max-width: 600px) {
+
+    .area-filtros {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .filtro-tipo {
+        width: 100%;
+    }
+
+    .filtro-tipo select {
+        height: 44px;
+    }
+
+    .filtro-categoria {
+        width: 100%;
+    }
+
+    .filtro-categoria select {
+        height: 44px;
+    }
+
+    .filtro-periodo {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .campo-data {
+        width: 100%;
+    }
+
+    .campo-data input {
+        width: 100%;
+        height: 44px;
+    }
+
+}
+
+/* 34. FILTRO POR CATEGORIA */
+.filtro-categoria {
+    flex: 1 1 180px;
+    min-width: 170px;
+}
+
+.filtro-categoria select {
+    width: 100%;
+    height: 48px;
+}
+
+.filtro-categoria select:hover {
+    border-color: #cbd5e1;
+}
+
+.filtro-categoria select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* 35. FILTRO POR PERÍODO */
+
+.filtro-periodo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.campo-data {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo-data label {
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.campo-data input {
+    height: 48px;
+    width: 155px;
+    padding: 0 12px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    background-color: #ffffff;
+    color: #1e293b;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+    cursor: text;
+
+    transition: all 0.2s ease;
+}
+
+/* 36. Texto de orientação */
+
+.campo-data input::placeholder {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* 37. Efeito ao passar o mouse */
+
+.campo-data input:hover {
+    border-color: #cbd5e1;
+}
+
+/* 38. Efeito ao selecionar o campo */
+
+.campo-data input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* 39. MENSAGEM QUANDO NÃO HÁ RESULTADOS */
+
+.mensagem-sem-resultados {
+    text-align: center;
+    padding: 35px 20px;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 40. RESUMO DA QUANTIDADE DE RESULTADOS */
+
+.resumo-resultados {
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 0 10px;
+}
+
+.resumo-resultados p {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* 41. ESTILO DO BOTÃO LIMPAR FILTROS DESATIVADO */
+
+#btn-limpar-filtros:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #e2e8f0;
+    color: #94a3b8;
+    border-color: #cbd5e1;
+}
+
+/* 42. EFEITO DO BOTÃO LIMPAR FILTROS */
+#btn-limpar-filtros:not(:disabled):hover {
+    background-color: #cbd5e1;
+    color: #334155;
+    border-color: #94a3b8;
+}
+
+/* 43. TRANSIÇÃO SUAVE DO BOTÃO LIMPAR FILTROS */
+#btn-limpar-filtros {
+    transition: background-color 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease,
+                opacity 0.2s ease;
+}
+
+/* 44. ACESSIBILIDADE: FOCO DO BOTÃO LIMPAR FILTROS */
+#btn-limpar-filtros:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+/* 45. ACESSIBILIDADE: FOCO NOS CAMPOS DE FILTRO */
+.area-filtros input:focus-visible,
+.area-filtros select:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+    border-color: #2563eb;
+}
+
+/* 46. ACESSIBILIDADE: MOVIMENTO REDUZIDO */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+/* 47. DESTAQUE DOS VALORES FINANCEIROS */
+
+.valor-entrada {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+.valor-saida {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+/* 48. ETIQUETAS DE RECEITA E DESPESA */
+
+.tipo-entrada {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background-color: #dcfce7;
+    color: #15803d;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tipo-saida {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background-color: #fee2e2;
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* 49. ORGANIZAÇÃO DOS BOTÕES DE AÇÃO */
+
+.btn-editar,
+.btn-excluir {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 75px;
+    padding: 9px 13px;
+    margin: 3px;
+    vertical-align: middle;
+}
+
+/* 50 ALINHAMENTO DA COLUNA DE AÇÕES */
+
+td:last-child {
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* 51. DESTAQUE GERAL DOS CAMPOS */
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
