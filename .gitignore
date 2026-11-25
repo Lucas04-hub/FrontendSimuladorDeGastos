@@ -13,3 +13,6 @@ __pycache__/
 
 # Arquivos de ambiente e segredos
 .env
+
+# Dados financeiros locais
+data/movimentacoes.json
