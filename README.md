@@ -19,7 +19,7 @@ O projeto utiliza uma aplicação Flask como backend e uma interface web interat
 - Filtros e pesquisa de movimentações.
 - Validação dos dados informados.
 - Interface responsiva.
-- Armazenamento dos dados em arquivo JSON.
+- Armazenamento local dos dados em arquivo JSON.
 
 ## Tecnologias utilizadas
 
@@ -109,6 +109,8 @@ Os testes verificam as validações das movimentações, o gerenciamento finance
 ## Armazenamento de dados
 
 As movimentações financeiras são armazenadas localmente em um arquivo JSON dentro da pasta `data/`.
+
+O arquivo de dados local é ignorado pelo Git, evitando que as movimentações pessoais sejam enviadas ao repositório público do GitHub.
 
 ## Status do projeto
 
